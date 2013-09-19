@@ -28,6 +28,7 @@ module Guard
 			cmd << "vendor/bin/codecept"
 			cmd << "run"
 			cmd << options[:suites].join(',')
+			cmd << '--debug'
 	
 			status = execute make(cmd)
 			status
