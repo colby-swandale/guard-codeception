@@ -6,6 +6,7 @@ module Guard
 		
 		DEFAULT_OPTIONS = {
 			:test_on_start 	=> true,
+			:suites		=> [:acceptance, :functional, :unit],
 			:debug 		=> true
 		}
 
@@ -26,6 +27,7 @@ module Guard
 			cmd = []
 			cmd << "vendor/bin/codecept"
 			cmd << "run"
+			cmd << options[:suites].join(',')
 	
 			status = execute make(cmd)
 			status

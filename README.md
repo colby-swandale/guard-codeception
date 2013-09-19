@@ -26,6 +26,14 @@ guard 'codeception' do
 end
 ```
 
+## Configuration
+The following options can be passed to Guard::Codeception
+
+```ruby
+:suites 	=> [:acceptence, :custom_suite]        	# Run only specified suites 
+ 							# default: [:acceptance, :functional, :unit]
+```
+
 ## Usage
 - Make sure you have codeception installed in your project via [composer](http://getcomposer.org/)
 - Create Guardfile, see example above
