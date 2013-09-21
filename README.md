@@ -30,8 +30,14 @@ end
 The following options can be passed to Guard::Codeception
 
 ```ruby
-:suites 	=> [:acceptence, :custom_suite]        	# Run only specified suites 
- 							# default: [:acceptance, :functional, :unit]
+:suites		=> [:acceptence, :custom_suite]	# Run only specified suites 
+ 						# default: [:acceptance, :functional, :unit]
+
+:debug 		=> false			# enable codeception debug mode
+						# default: false
+
+:test_on_start 	=> false			# run tests when guard starts
+						# default: false
 ```
 
 ## Usage
