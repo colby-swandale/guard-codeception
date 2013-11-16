@@ -1,0 +1,3 @@
+guard 'codeception' do
+    watch(%r{^.*\.php$})
+end
