@@ -7,7 +7,8 @@ module Guard
 		DEFAULT_OPTIONS = {
 			:test_on_start 	=> false,
 			:suites		=> [:acceptance, :functional, :unit],
-			:debug 		=> false
+			:debug 		=> false,
+			:groups 	=> []
 		}
 
 		def initialize(watchers = [], options = {})
@@ -28,8 +29,9 @@ module Guard
 			cmd << "vendor/bin/codecept"
 			cmd << "run"
 			cmd << options[:suites].join(',')
+			cmd << '-g ' + options[:groups].join(' -g ') if !options[:groups].empty?
 			cmd << '--debug' if options[:debug]
-	
+
 			status = execute make(cmd)
 			status
 		end
