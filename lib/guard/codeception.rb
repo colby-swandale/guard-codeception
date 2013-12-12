@@ -1,8 +1,8 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 
 module Guard
-	class Codeception < Guard
+	class Codeception < Plugin
 		
 		DEFAULT_OPTIONS = {
 			:test_on_start 	=> false,
@@ -11,9 +11,9 @@ module Guard
 			:groups 	=> []
 		}
 
-		def initialize(watchers = [], options = {})
-			_options = DEFAULT_OPTIONS.merge(options)
-			super(watchers, _options)
+		def initialize(options = {})
+			@options = DEFAULT_OPTIONS.merge(options)
+			super(@options)
 		end
 		
 		def start

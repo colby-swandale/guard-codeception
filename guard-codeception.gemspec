@@ -5,7 +5,7 @@ require 'guard/codeception/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'guard-codeception'
-  spec.version       = Guard::Codeception::VERSION
+  spec.version       = Guard::CodeceptionVersion::VERSION
   spec.authors       = ['Colby Swandale']
   spec.email         = ['colby@taplaboratories.com.au']
   spec.description   = %q{Guard gem for codeception}
@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'guard', '>= 1.1.0'
  
   spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'rake',
-  spec.add_development_dependency 'rpsec'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec', '~> 2.14'
 end
