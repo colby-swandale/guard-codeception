@@ -36,7 +36,6 @@ module Guard
 			status
 		end
 
-
 		def make(cmd_parts)
 			cmd_parts.join ' '
 		end
