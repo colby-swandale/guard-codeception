@@ -1,8 +1,5 @@
-## Note: This gem is in alpha 
 # TODO:
-- Create test cases
-- Handle all Codeception options
-- Profit?
+- 100% code coverage
 
 # Guard::Codeception
 
@@ -12,7 +9,7 @@ Guard::Codeception is an extension to the [guard gem](http://guardgem.org/) for 
 
 Add this line to your application's Gemfile:
 
-    gem 'guard-codeception', :git => 'https://github.com/colby-swandale/guard-codeception'
+    gem 'guard-codeception'
 
 And then execute:
 
