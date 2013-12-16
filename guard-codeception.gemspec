@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['colby@taplaboratories.com.au']
   spec.description   = %q{Guard gem for codeception}
   spec.summary       = %q{guard-codeception automatically runs codeception on file changes}
-  spec.homepage      = 'http://www.taplaboratories.com.au/guard-codeception'
+  spec.homepage      = 'https://github.com/colby-swandale/guard-codeception'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
