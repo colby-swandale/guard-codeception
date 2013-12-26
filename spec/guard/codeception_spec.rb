@@ -7,50 +7,50 @@ describe Guard::Codeception do
 		context 'when no options are provided' do
 
 			it 'has :test_on_start set to false' do
-				subject.options[:test_on_start].should == false
+				expect(subject.options[:test_on_start]).to be_false
 			end
 
 			it 'has :suites set to [:acceptance, :functional, :unit]' do
-				subject.options[:suites].should == [:acceptance, :functional, :unit]
+				expect(subject.options[:suites]).to match_array([:acceptance, :functional, :unit])
 			end
 
 			it 'has :debug set to false' do
-				subject.options[:debug].should == false
+				expect(subject.options[:debug]).to be_false
 			end
 
 			it 'has :groups set to []' do
-				subject.options[:groups].should == []
+				expect(subject.options[:groups]).to match_array([])
 			end
 		end
 
 		context 'when options are provided' do
 
 			subject do
-				Guard::Codeception.new test_on_start: true, suites: [], debug: true, groups: [:foo] 
+				Guard::Codeception.new test_on_start: true, suites: [:foo], debug: true, groups: [:bar] 
 			end
 
 			it 'has :test_on_start set to true' do
-				subject.options[:test_on_start].should == true
+				expect(subject.options[:test_on_start]).to be_true
 			end
 
 			it 'has suites set to []' do
-				subject.options[:suites].should == []
+				expect(subject.options[:suites]).to match_array([:foo])
 			end	
 
 			it 'has debug set to true' do
-				subject.options[:debug].should == true
+				expect(subject.options[:debug]).to be_true
 			end
 
-			it 'has suites set to [:foo]' do
-				subject.options[:groups].should == [:foo]
+			it 'has groups set to [:foo]' do
+				expect(subject.options[:groups]).to match_array([:bar])
 			end
 		end
 	end
 
 	describe '#start' do
 
-		it 'should\'t call #run_all' do
-			subject.should_not_receive(:run_all)
+		it 'should\'t call #run' do
+			subject.should_not_receive :run
 			subject.start
 		end
 
@@ -60,10 +60,18 @@ describe Guard::Codeception do
 				Guard::Codeception.new test_on_start: true
 			end
 
-			it 'should call #run_all' do
-				subject.should_receive(:run)
+			it 'should call #run' do
+				subject.should_receive :run
 				subject.start
 			end
+		end
+	end
+
+	describe '#run_on_change' do
+
+		it 'should call #run' do
+			subject.should_receive :run
+			subject.run_on_change []
 		end
 	end
 end
