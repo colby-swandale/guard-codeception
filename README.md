@@ -27,17 +27,27 @@ end
 The following options can be passed to Guard::Codeception
 
 ```ruby
-:suites		=> [:acceptence, :custom_suite]	# run only specified suites 
- 						# default: [:acceptance, :functional, :unit]
+# run only specified suites 		default: [:acceptance, :functional, :unit]
+:suites			=> [:acceptence, :custom_suite]
 
-:groups		=> [:foo, :bar]			# run specific test group
-						# default: []
+# run specific test group 			default: []
+:groups			=> [:foo, :bar]
 
-:debug 		=> false			# enable codeception debug mode
-						# default: false
+# enable codeception debug mode 	default: false
+:debug 			=> false
 
-:test_on_start 	=> false			# run tests when guard starts
-						# default: false
+# run tests when guard starts		default: false
+:test_on_start 	=> false
+
+# path to codecept					default 'codecept'
+# if codecept is not avaliable via the PATH you can
+# define the path to codecept here. ie: installing codeception
+# via composer would be :codecept => 'vendor/bin/codecept'
+:codecept		=> '/path/to/codecept'
+
+# extra cli you wish to pass to composer
+# ie: config, json or xml output
+:cli 			=> false
 ```
 
 ## Usage

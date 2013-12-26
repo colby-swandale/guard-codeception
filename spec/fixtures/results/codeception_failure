@@ -1,0 +1,29 @@
+Codeception PHP Testing Framework v1.8.1
+Powered by PHPUnit 3.7.28 by Sebastian Bergmann.
+
+Acceptance Tests (1) ------------------------
+Running  (indexCept.php)                Running indexCept.php                   Fail
+---------------------------------------------
+
+Functional Tests (0) ------------------------
+---------------------------------------------
+
+Unit Tests (0) ------------------------------
+---------------------------------------------
+
+
+Time: 153 ms, Memory: 11.75Mb
+
+There was 1 failure:
+
+---------
+1) indexCept.php
+Sorry, I couldn't see "Foo Bar","h2":
+CSS or XPath 'h2' was not found on page.
+
+Scenario Steps:
+2. I see "Foo Bar","h2"
+1. I am on page "/"
+
+
+FAILURES!

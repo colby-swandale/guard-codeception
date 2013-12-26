@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Guard::Codeception do
 
+	let (:runner) { Guard::Codeception::Runner }
+
 	describe '#initialize' do
 
 		context 'when no options are provided' do
@@ -67,11 +69,19 @@ describe Guard::Codeception do
 		end
 	end
 
-	describe '#run_on_change' do
+	describe '#runs_on_change' do
 
 		it 'should call #run' do
 			subject.should_receive :run
 			subject.run_on_change []
+		end
+	end
+
+	describe '#run' do
+
+		it 'should call Runner#run' do
+			runner.should_receive :run
+			subject.run
 		end
 	end
 end

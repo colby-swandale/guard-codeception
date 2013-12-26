@@ -1,0 +1,18 @@
+{
+    "name": "colby-swandale/guard-codeception",
+    "description": "codeception test project for guard-codeception",
+    "require-dev": {
+        "codeception/codeception": "1.7.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Colby Swandale",
+            "email": "colby@taplaboratories.com.au"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+}

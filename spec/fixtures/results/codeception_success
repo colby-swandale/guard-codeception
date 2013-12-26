@@ -1,0 +1,17 @@
+Codeception PHP Testing Framework v1.8.1
+Powered by PHPUnit 3.7.28 by Sebastian Bergmann.
+
+Acceptance Tests (1) ------------------------
+Running  (indexCept.php)                Running indexCept.php                   Ok
+---------------------------------------------
+
+Functional Tests (0) ------------------------
+---------------------------------------------
+
+Unit Tests (0) ------------------------------
+---------------------------------------------
+
+
+Time: 151 ms, Memory: 12.00Mb
+
+OK (1 test, 1 assertion)
