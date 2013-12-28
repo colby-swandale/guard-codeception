@@ -45,7 +45,7 @@ The following options can be passed to Guard::Codeception
 # via composer would be :codecept => 'vendor/bin/codecept'
 :codecept		=> '/path/to/codecept'
 
-# extra cli you wish to pass to composer
+# extra cli you wish to pass to codeceeption
 # ie: config, json or xml output
 :cli 			=> false
 ```
