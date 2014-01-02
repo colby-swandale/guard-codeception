@@ -1,6 +1,9 @@
 rvm:
   - 1.9.3
   - 2.0.0
+before_script:
+  - sudo apt-get update
+  - sudo apt-get install php
 notifications:
   email:
     - colby@taplaboratories.com.au
