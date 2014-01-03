@@ -3,7 +3,7 @@ rvm:
   - 2.0.0
 before_script:
   - sudo apt-get update
-  - sudo apt-get install php5
+  - sudo apt-get install php5 php5-curl
   - cd spec/fixtures/codeception
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install --dev
