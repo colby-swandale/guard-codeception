@@ -6,7 +6,7 @@ before_script:
   - sudo apt-get install php5
   - cd spec/fixtures/codeception
   - curl -sS https://getcomposer.org/installer | php
-  - composer.phar install --dev
+  - php composer.phar install --dev
 notifications:
   email:
     - colby@taplaboratories.com.au
