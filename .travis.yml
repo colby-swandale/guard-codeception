@@ -2,8 +2,12 @@ rvm:
   - 1.9.3
   - 2.0.0
 before_script:
+  - echo "yes" | sudo add-apt-repository ppa:ondrej/php5
   - sudo apt-get update
-  - sudo apt-get install php5
+  - sudo apt-get install php5 php5-curl
+  - cd spec/fixtures/codeception
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install --dev
 notifications:
   email:
     - colby@taplaboratories.com.au
