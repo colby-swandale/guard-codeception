@@ -2,7 +2,7 @@ rvm:
   - 1.9.3
   - 2.0.0
 before_script:
-  - sudo add-apt-repository ppa:ondrej/php5
+  - echo "yes" | sudo add-apt-repository ppa:ondrej/php5
   - sudo apt-get update
   - sudo apt-get install php5 php5-curl
   - cd spec/fixtures/codeception
