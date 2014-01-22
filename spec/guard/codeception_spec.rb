@@ -77,6 +77,15 @@ describe Guard::Codeception do
     end
   end
 
+  describe '#reload' do
+
+    it 'should call #reload' do
+      subject.should_receive :run
+      subject.reload
+    end
+
+  end
+
   describe '#run' do
 
     it 'should call Runner#run' do

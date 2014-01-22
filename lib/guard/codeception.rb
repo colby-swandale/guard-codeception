@@ -28,6 +28,10 @@ module Guard
       run
     end
 
+    def reload
+      run
+    end
+
     def run
       Runner.run options
     end
