@@ -20,7 +20,7 @@ module Guard
           cmd << '--debug' if options[:debug]
           cmd << options[:cli] if options[:cli]
 
-          UI.info execute make(cmd)
+          puts system make(cmd)
         end
 
         def codeception_exists?(codecept_path)
