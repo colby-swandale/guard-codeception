@@ -86,11 +86,22 @@ describe Guard::Codeception do
 
   end
 
+  describe '#run_all' do
+
+    it 'should call #run_all' do
+      subject.should_receive :run
+      subject.run_all
+    end
+
+  end
+
   describe '#run' do
 
     it 'should call Runner#run' do
       runner.should_receive :run
       subject.run
     end
+
   end
+
 end

@@ -15,11 +15,6 @@ describe Guard::Codeception::Runner do
 
     # TODO: test #make
 
-    it 'calls #execute' do
-      subject.should_receive(:execute).with(default_options[:codecept] + ' run acceptance -g group1 -c ' + Dir.getwd + '/spec/fixtures/codeception/codeception.yml')
-      subject.run default_options
-    end
-
     it 'calls #codeception_exists?' do
       subject.should_receive(:codeception_exists?)
       subject.run default_options
@@ -48,12 +43,4 @@ describe Guard::Codeception::Runner do
     end
   end
 
-  describe '#execute' do
-
-    it 'returns the output from codeception' do
-      output = subject.execute default_options[:codecept] + ' run foo,bar'
-      output.should_not be_empty
-      output.should include 'Codeception PHP Testing Framework'
-    end
-  end
 end

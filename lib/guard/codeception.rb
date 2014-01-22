@@ -32,6 +32,10 @@ module Guard
       run
     end
 
+    def run_all
+      run
+    end
+
     def run
       Runner.run options
     end

@@ -34,10 +34,6 @@ module Guard
           cmd_parts.join ' '
         end
 
-        def execute(cmd)
-          %x(#{cmd})
-        end
-
       end
 
     end
