@@ -7,7 +7,7 @@ module Guard
         def run(options = {})
           UI.info 'Starting Tests'
 
-          if !codeception_exists? options[:codecept]
+          unless codeception_exists? options[:codecept]
             UI.error 'codecept isnt\'t avaliable, have you installed codeception?'
             return false
           end
