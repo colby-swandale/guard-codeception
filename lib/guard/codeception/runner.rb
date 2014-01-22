@@ -35,7 +35,7 @@ module Guard
         end
 
         def execute(cmd)
-          return %x(#{cmd})
+          %x(#{cmd})
         end
 
       end
