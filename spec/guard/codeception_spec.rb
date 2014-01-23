@@ -92,4 +92,17 @@ describe Guard::Codeception do
 
   end
 
+  describe '#run_on_modification' do
+
+    subject do
+      Guard::Codeception.new
+    end
+
+    it 'should call #run_all' do
+      subject.runner.should_receive :run
+      subject.run_on_modifications []
+    end
+
+  end
+
 end
