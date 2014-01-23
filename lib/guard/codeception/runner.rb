@@ -1,7 +1,7 @@
 module Guard
-  class Codeception
+	class Codeception
 
-    module Runner
+		module Runner
 
 			class << self
 
@@ -10,7 +10,7 @@ module Guard
 
 					if !codeception_exists? options[:codecept]
 						UI.error 'codecept isnt\'t avaliable, have you installed codeception?'
-						return false
+						false
 					end
 
 					cmd = []
@@ -26,7 +26,8 @@ module Guard
 				
 				def codeception_exists?(codecept_path)
 					%x(#{codecept_path} --version)
-						true
+					true
+					
 					rescue Errno::ENOENT
 						false
 				end
@@ -36,7 +37,7 @@ module Guard
 				end
 
 				def execute(cmd)
-					return %x(#{cmd})
+					%x(#{cmd})
 				end
 			end
 		end
