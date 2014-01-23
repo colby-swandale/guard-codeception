@@ -1,3 +1,3 @@
-guard 'codeception' do
+guard :codeception do
   watch(%r{^.*\.php$})
 end

@@ -63,43 +63,22 @@ describe Guard::Codeception do
       end
 
       it 'should call #run' do
-        subject.should_receive :run
+        subject.runner.should_receive :run
         subject.start
       end
+
     end
-  end
-
-  describe '#runs_on_change' do
-
-    it 'should call #run' do
-      subject.should_receive :run
-      subject.run_on_change []
-    end
-  end
-
-  describe '#reload' do
-
-    it 'should call #reload' do
-      subject.should_receive :run
-      subject.reload
-    end
-
   end
 
   describe '#run_all' do
 
-    it 'should call #run_all' do
-      subject.should_receive :run
-      subject.run_all
+    subject do
+      Guard::Codeception.new
     end
 
-  end
-
-  describe '#run' do
-
-    it 'should call Runner#run' do
-      runner.should_receive :run
-      subject.run
+    it 'should call #run_all' do
+      subject.runner.should_receive :run
+      subject.run_all
     end
 
   end

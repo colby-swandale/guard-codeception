@@ -17,7 +17,7 @@ describe Guard::Codeception::Runner do
 
     it 'calls #codeception_exists?' do
       subject.should_receive(:codeception_exists?)
-      subject.run default_options
+      subject.run
     end
   end
 

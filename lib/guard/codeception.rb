@@ -4,7 +4,9 @@ require 'guard/plugin'
 module Guard
   class Codeception < Plugin
 
-    autoload :Runner, 'guard/codeception/runner'
+    require 'guard/codeception/runner'
+
+    attr_accessor :runner, :options
 
     DEFAULT_OPTIONS = {
       test_on_start:  false,
@@ -16,28 +18,32 @@ module Guard
     }
 
     def initialize(options = {})
-      @options = DEFAULT_OPTIONS.merge(options)
-      super(@options)
+      super
+
+      @options  = DEFAULT_OPTIONS.merge(options)
+      @runner   = Runner.new(@options)
     end
 
     def start
-      run if options[:test_on_start]
+      ::Guard::UI::info 'Guard::Codeception is running'
+      runner.run if options[:test_on_start]
     end
 
-    def run_on_change(paths)
-      run
+    def run_on_modifications(paths)
+      display_paths(paths)
     end
 
     def reload
-      run
     end
 
     def run_all
-      run
+      runner.run
     end
 
-    def run
-      Runner.run options
+    def display_paths(paths)
+      paths.each do |path|
+        puts path
+      end
     end
 
   end
