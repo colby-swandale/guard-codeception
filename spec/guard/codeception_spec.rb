@@ -51,9 +51,17 @@ describe Guard::Codeception do
 
   describe '#start' do
 
-    it 'should\'t call #run' do
-      subject.should_not_receive :run
-      subject.start
+    context 'with :run_on_start set to false' do
+
+      subject do
+        Guard::Codeception.new test_on_start: false
+      end
+
+      it 'should\'t call #run' do
+        subject.should_not_receive :run
+        ::Guard::UI.should_receive(:info)
+        subject.start
+      end
     end
 
     context 'with :run_on_start set to true' do
@@ -64,6 +72,7 @@ describe Guard::Codeception do
 
       it 'should call #run' do
         subject.runner.should_receive :run
+        ::Guard::UI.should_receive(:info)
         subject.start
       end
 

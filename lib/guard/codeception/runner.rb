@@ -9,14 +9,27 @@ module Guard
       end
 
       def run
+        _run if _codeception_exists?
+      end
+
+      private
+
+      def _run
         UI.info 'Codeception: Starting Tests'
+        Kernel.system _codeception_command
+      end
 
-        unless codeception_exists? options[:codecept]
-          UI.error "codecept isn't available at #{options[:codecept]}, have you installed codeception?"
-          return false
-        end
+      def _codeception_exists?
+        %x(#{options[:codecept]} --version)
+        true
+      rescue Errno::ENOENT
+        UI.error "codecept isn't available at #{options[:codecept]}, have you installed codeception?"
+        false
+      end
 
+      def _codeception_command
         cmd = []
+
         cmd << options[:codecept]
         cmd << 'run'
         cmd << options[:suites].join(',')
@@ -24,18 +37,7 @@ module Guard
         cmd << '--debug' if options[:debug]
         cmd << options[:cli] if options[:cli]
 
-        puts system make(cmd)
-      end
-
-      def codeception_exists?(codecept_path)
-        %x(#{codecept_path} --version)
-        true
-      rescue Errno::ENOENT
-        false
-      end
-
-      def make(cmd_parts)
-        cmd_parts.join ' '
+        cmd.join ' '
       end
 
     end

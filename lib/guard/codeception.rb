@@ -9,8 +9,6 @@ module Guard
 
     attr_accessor :runner, :options
 
-
-
     def initialize(options = {})
       super
       @options  = Options.with_defaults(options)
@@ -18,19 +16,29 @@ module Guard
     end
 
     def start
-      ::Guard::UI::info 'Guard::Codeception is running'
-      runner.run if options[:test_on_start]
+      _show_start_message
+      runner.run if _should_test_on_start?
     end
 
     def run_on_modifications(paths)
-      runner.run
+      puts runner.run
     end
 
     def reload
     end
 
     def run_all
-      runner.run
+      puts runner.run
+    end
+
+    private
+
+    def _show_start_message
+      ::Guard::UI::info 'Guard::Codeception is running'
+    end
+
+    def _should_test_on_start?
+      options[:test_on_start]
     end
 
   end
