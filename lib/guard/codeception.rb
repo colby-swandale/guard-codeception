@@ -5,22 +5,15 @@ module Guard
   class Codeception < Plugin
 
     require 'guard/codeception/runner'
+    require 'guard/codeception/options'
 
     attr_accessor :runner, :options
 
-    DEFAULT_OPTIONS = {
-      test_on_start:  false,
-      suites:         [:acceptance, :functional, :unit],
-      debug:          false,
-      groups:         [],
-      codecept:       'codecept',
-      cli:            false
-    }
+
 
     def initialize(options = {})
       super
-
-      @options  = DEFAULT_OPTIONS.merge(options)
+      @options  = Options.with_defaults(options)
       @runner   = Runner.new(@options)
     end
 
@@ -30,7 +23,7 @@ module Guard
     end
 
     def run_on_modifications(paths)
-      display_paths(paths)
+      runner.run
     end
 
     def reload
@@ -38,12 +31,6 @@ module Guard
 
     def run_all
       runner.run
-    end
-
-    def display_paths(paths)
-      paths.each do |path|
-        puts path
-      end
     end
 
   end
