@@ -10,7 +10,18 @@ describe Guard::Codeception::Notifier do
       failures: 0
     }
   }
+
   describe '#notify' do
+
+    it 'should give proper message' do
+      message = "100 tests\n"
+      message << "1000 assertions\n"
+      message << "0 failures\n"
+      message << "0 errors\n"
+
+      ::Guard::Notifier::should_receive(:notify).with(message, {image: :success, title: Guard::Codeception::Notifier::TITLE})
+      subject.notify(results)
+    end
 
     it 'should give success message' do
       ::Guard::Notifier::should_receive(:notify).with(message(results), {image: :success, title: Guard::Codeception::Notifier::TITLE})
