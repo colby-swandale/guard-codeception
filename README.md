@@ -53,9 +53,6 @@ The following options can be passed to Guard::Codeception
 ```
 
 ## Usage
-- Make sure you have codeception installed in your project via [composer](http://getcomposer.org/)
-- Create Guardfile, see example above
-
 ```bash
 $ guard
 ```
