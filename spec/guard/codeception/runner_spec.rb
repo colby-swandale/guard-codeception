@@ -27,7 +27,7 @@ describe Guard::Codeception::Runner do
     end
 
     it 'calls system commands' do
-      Kernel.should_receive(:system)
+      runner.should_receive(:`).twice # codeception check, command
       ::Guard::UI.should_receive(:info)
       runner.run
     end
@@ -39,7 +39,7 @@ describe Guard::Codeception::Runner do
     describe 'suites' do
       it 'should create a proper system command with multiple suites' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({suites: [:unit, :acceptance]}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run unit,acceptance -g group1 #{runner.options[:cli]}")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run unit,acceptance -g group1 #{runner.options[:cli]}")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end
@@ -48,14 +48,14 @@ describe Guard::Codeception::Runner do
     describe 'groups' do
       it 'should create a proper system command with multiple groups' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({groups: [:group1, :group2]}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run acceptance -g group1 -g group2 #{runner.options[:cli]}")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run acceptance -g group1 -g group2 #{runner.options[:cli]}")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end
 
       it 'should create a proper system command with no groups' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({groups: []}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run acceptance #{runner.options[:cli]}")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run acceptance #{runner.options[:cli]}")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end
@@ -64,14 +64,14 @@ describe Guard::Codeception::Runner do
     describe 'debug' do
       it 'should add debug when needed' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({debug: true}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run acceptance -g group1 --debug #{runner.options[:cli]}")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run acceptance -g group1 --debug #{runner.options[:cli]}")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end
 
       it 'should not add debug when needed' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({debug: false}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run acceptance -g group1 #{runner.options[:cli]}")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run acceptance -g group1 #{runner.options[:cli]}")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end
@@ -80,14 +80,14 @@ describe Guard::Codeception::Runner do
     describe 'cli' do
       it 'should add cli option when supplied' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({cli: '-c foo'}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run acceptance -g group1 -c foo")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run acceptance -g group1 -c foo")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end
 
       it 'should not add cli option when supplied' do
         test_runner = Guard::Codeception::Runner.new(runner.options.merge({cli: nil}))
-        Kernel.should_receive(:system).with("#{runner.options[:codecept]} run acceptance -g group1")
+        test_runner.should_receive(:_execute_command).with("#{runner.options[:codecept]} run acceptance -g group1")
         ::Guard::UI.should_receive(:info)
         test_runner.run
       end

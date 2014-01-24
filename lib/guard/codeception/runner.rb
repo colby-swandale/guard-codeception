@@ -2,10 +2,18 @@ module Guard
   class Codeception
     class Runner
 
-      attr_accessor :options
+      require 'guard/codeception/parser'
+      require 'guard/codeception/notifier'
+
+      attr_accessor :options, :parser, :notifier
+
+      CODECEPTION_FAILURES_EXIT_CODE  = 1
+      CODECEPTION_ERRORS_EXIT_CODE    = 2
 
       def initialize(options = {})
-        @options = options
+        @options  = options
+        @parser   = Guard::Codeception::Parser.new
+        @notifier = Guard::Codeception::Notifier.new
       end
 
       def run
@@ -15,8 +23,10 @@ module Guard
       private
 
       def _run
-        UI.info 'Codeception: Starting Tests'
-        Kernel.system _codeception_command
+        UI.info 'Codeception: Starting Tests. Results will be displayed when finished testing.'
+        output = _execute_command _codeception_command
+        notifier.notify(parser.parse(output)) if $?.success?
+        output
       end
 
       def _codeception_exists?
@@ -38,6 +48,10 @@ module Guard
         cmd << options[:cli] if options[:cli]
 
         cmd.join ' '
+      end
+
+      def _execute_command(command)
+        %x{#{command}}
       end
 
     end

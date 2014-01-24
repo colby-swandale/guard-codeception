@@ -17,7 +17,7 @@ module Guard
 
     def start
       _show_start_message
-      runner.run if _should_test_on_start?
+      puts runner.run if _should_test_on_start?
     end
 
     def run_on_modifications(paths)
