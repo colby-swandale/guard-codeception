@@ -3,16 +3,21 @@
 Guard::Codeception is an extension to the [guard gem](http://guardgem.org/) for the [codeception](http://codeception.com/) testing framework 
 
 ## Installation
+```
+$ gem install guard-codeception 
+```
 
-Add this line to your application's Gemfile:
-
-    gem 'guard-codeception'
-
+Or add this line to your application's Gemfile:
+```ruby
+gem 'guard-codeception'
+```
 And then execute:
+```
+$ bundle
+```
 
-    $ bundle
-
-## Example Guardfle
+## Guardfle
+The Guardfile can be generated from `$ guard init codeception`. By default Guard::Codeception will listen to any changes to PHP files only but you can alter the regex to your needs.
 
 ```ruby
 guard 'codeception' do
