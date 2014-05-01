@@ -33,10 +33,10 @@ The following options can be passed to Guard::Codeception
 :suites			=> [:acceptence, :custom_suite]
 
 # run specific test group 			default: []
-:groups			=> [:foo, :bar]
+:groups => [:foo, :bar]
 
 # enable codeception debug mode 	default: false
-:debug 			=> false
+:debug => false
 
 # run tests when guard starts		default: false
 :test_on_start 	=> false
@@ -45,11 +45,17 @@ The following options can be passed to Guard::Codeception
 # if codecept is not avaliable via the PATH you can
 # define the path to codecept here. ie: installing codeception
 # via composer would be :codecept => 'vendor/bin/codecept'
-:codecept		=> '/path/to/codecept'
+:codecept	 => '/path/to/codecept'
 
 # extra cli you wish to pass to codeceeption
 # ie: config, json or xml output
-:cli 			=> false
+:cli => false
+
+# notify on success					default: true
+:notify_on_success => true
+
+# notify on failure					default: false
+:notify_on_error => true
 ```
 
 ## Usage

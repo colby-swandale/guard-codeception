@@ -3,12 +3,14 @@ module Guard
     module Options
 
       DEFAULTS = {
-          test_on_start:  false,
-          suites:         [:acceptance, :functional, :unit],
-          debug:          false,
-          groups:         [],
-          codecept:       'codecept',
-          cli:            false
+          test_on_start:     false,
+          suites:            [:acceptance, :functional, :unit],
+          debug:             false,
+          groups:            [],
+          codecept:          'codecept',
+          cli:               false,
+          notify_on_error:   false,
+          notify_on_success: true
       }
 
       class << self
