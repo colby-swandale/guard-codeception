@@ -25,7 +25,7 @@ module Guard
       def _run
         UI.info 'Codeception: Starting Tests. Results will be displayed when finished testing.'
         output = _execute_command _codeception_command
-        notifier.notify(parser.parse(output)) if $?.success?
+        notifier.notify(parser.parse(output))
         output
       end
 
