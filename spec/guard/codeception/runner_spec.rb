@@ -26,6 +26,11 @@ describe Guard::Codeception::Runner do
       runner.run
     end
 
+    it 'notifies guard of result' do
+      ::Guard::Notifier.should_receive(:notify)
+      runner.run
+    end
+
     it 'calls system commands' do
       runner.should_receive(:`).twice # codeception check, command
       ::Guard::UI.should_receive(:info)
