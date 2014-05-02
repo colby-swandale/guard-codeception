@@ -14,11 +14,8 @@ module Guard
       private
 
       def _get (text, result, find)
-        if result == 'error'
-          text.to_s.downcase.match(%r{#{find.to_s}: \d+}).to_s.split(': ')[1].to_i
-        else
-          text.to_s.downcase.match(%r{\d+\s#{find.to_s}?}).to_s.split(' ')[0].to_i
-        end        
+        return text.to_s[%r{#{find.to_s}: \d+}i].to_s.split(': ')[1].to_i if result == 'error'
+        text.to_s[%r{\d+\s#{find.to_s}?}i].to_s.split(' ')[0].to_i
       end
     end
   end
