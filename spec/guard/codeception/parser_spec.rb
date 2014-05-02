@@ -10,12 +10,34 @@ describe Guard::Codeception::Parser do
       end
     end
 
-    it 'should give values if they exist in case of success' do
-        results = subject.parse("OK (4 tests, 16 assertions)")
-        results[:tests].should eq(4)
-        results[:assertions].should eq(16)
-        results[:failures].should eq(0)
-        results[:errors].should eq(0)
+    it 'should parse success result with plural words' do
+        result = subject.parse("OK (4 tests, 16 assertions)")
+        result[:tests].should eq(4)
+        result[:assertions].should eq(16)
+        result[:failures].should eq(0)
+        result[:errors].should eq(0)
+    end
+
+    it 'should parse success result with singular words' do
+        result = subject.parse("OK (1 test, 1 assertion)")
+        result[:tests].should eq(1)
+        result[:assertions].should eq(1)
+        result[:failures].should eq(0)
+        result[:errors].should eq(0)
+    end
+
+    it 'should parse success result with mixed plural and singular words' do
+        result = subject.parse("OK (1 test, 2 assertions)")
+        result[:tests].should eq(1)
+        result[:assertions].should eq(2)
+        result[:failures].should eq(0)
+        result[:errors].should eq(0)
+
+        result = subject.parse("OK (100 tests, 1 assertion)")
+        result[:tests].should eq(100)
+        result[:assertions].should eq(1)
+        result[:failures].should eq(0)
+        result[:errors].should eq(0)
     end
 
     it 'should give values if they exist in case of failures' do

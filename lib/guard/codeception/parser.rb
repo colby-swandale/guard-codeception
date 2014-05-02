@@ -17,7 +17,7 @@ module Guard
         if result == 'error'
           text.to_s.downcase.match(%r{#{find.to_s}: \d+}).to_s.split(': ')[1].to_i
         else
-          text.to_s.downcase.match(%r{\d+\s#{find.to_s}}).to_s.split(' ')[0].to_i
+          text.to_s.downcase.match(%r{\d+\s#{find.to_s}?}).to_s.split(' ')[0].to_i
         end        
       end
     end
