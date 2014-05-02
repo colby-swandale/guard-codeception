@@ -63,6 +63,14 @@ The following options can be passed to Guard::Codeception
 $ guard
 ```
 
+## Running tests
+
+```bash
+$ gem install bundler
+$ bundle
+$ rspec
+```
+
 ## Contributing
 
 1. Fork it
