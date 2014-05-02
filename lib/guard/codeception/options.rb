@@ -9,7 +9,7 @@ module Guard
           groups:            [],
           codecept:          'codecept',
           cli:               false,
-          notify_on_error:   false,
+          notify_on_error:   true,
           notify_on_success: true
       }
 
