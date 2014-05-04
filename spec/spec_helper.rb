@@ -7,10 +7,8 @@ end
 
 require 'rspec'
 require 'guard/codeception'
-
-#require 'coveralls'
-
-
+require 'coveralls'
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
