@@ -5,7 +5,7 @@ rvm:
 before_script:
   - echo "yes" | sudo add-apt-repository ppa:ondrej/php5
   - sudo apt-get update
-  - sudo apt-get install php5 php5-curl
+  - sudo apt-get install php5-cli php5-curl -y
   - cd spec/fixtures/codeception
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install --dev
