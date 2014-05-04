@@ -4,10 +4,10 @@ module Guard
 
       def parse(text)
         {
-            tests:      _get(text, 'Tests|tests'),
-            failures:   _get(text, 'Failures|failures'),
-            assertions: _get(text, 'Assertions|assertions'),
-            errors:     _get(text, 'Errors|errors')
+            tests:      _get(text, 'tests'),
+            failures:   _get(text, 'failures'),
+            assertions: _get(text, 'assertions'),
+            errors:     _get(text, 'errors')
         }
       end
 
@@ -15,7 +15,7 @@ module Guard
 
       def _get (text, find)
         begin
-          text.to_s.match(%r{(?<count>\d+)?\ ?(#{find.to_s})(\: (?<count>\d+))?})[:count].to_i
+          text.to_s.match(/(FAILURES!\n|OK ).*?(?<count>\d+)? ?#{find.to_s}?(: (?<count>\d+))?/i)[:count].to_i
         rescue NoMethodError
           0
         end
