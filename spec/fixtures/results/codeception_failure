@@ -1,8 +1,9 @@
 Codeception PHP Testing Framework v1.8.1
 Powered by PHPUnit 3.7.28 by Sebastian Bergmann.
 
-Acceptance Tests (1) ------------------------
-Running  (indexCept.php)                Running indexCept.php                   Fail
+Acceptance Tests (2) ------------------------
+Running  (index2Cept.php)               Running index2Cept.php                  Fail
+Running  (indexCept.php)                Running indexCept.php                   Ok
 ---------------------------------------------
 
 Functional Tests (0) ------------------------
@@ -12,18 +13,22 @@ Unit Tests (0) ------------------------------
 ---------------------------------------------
 
 
-Time: 153 ms, Memory: 11.75Mb
+Time: 131 ms, Memory: 11.00Mb
 
 There was 1 failure:
 
 ---------
-1) indexCept.php
-Sorry, I couldn't see "Foo Bar","h2":
-CSS or XPath 'h2' was not found on page.
+1) index2Cept.php
+Sorry, I couldn't see "NonExist Title","h1":
+'h1' selector.
+Failed asserting that
+-->  /Hello World
+--> contains "nonexist title".
 
 Scenario Steps:
-2. I see "Foo Bar","h2"
+2. I see "NonExist Title","h1"
 1. I am on page "/"
 
 
 FAILURES!
+Tests: 2, Assertions: 2, Failures: 1.
