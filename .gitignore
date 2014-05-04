@@ -18,3 +18,4 @@ tmp
 .DS_Store
 .idea
 spec/fixtures/codeception/vendor
+spec/fixtures/codeception/tests/_log/
