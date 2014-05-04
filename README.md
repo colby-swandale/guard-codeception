@@ -68,7 +68,7 @@ $ guard
 
 
 ## Testing
-You need to pull codeception from composer under `spec/fixtures/codeception` with `codecept install --dev`, then run `rspec`.
+You need to pull codeception from composer under `spec/fixtures/codeception` with `composer install --dev`, then run `rspec`.
 
 ## Author
 
