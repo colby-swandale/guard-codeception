@@ -1,4 +1,4 @@
-# Guard::Codeception [![Build Status](https://travis-ci.org/colby-swandale/guard-codeception.png?branch=master)](https://travis-ci.org/colby-swandale/guard-codeception) [![Coverage Status](https://coveralls.io/repos/colby-swandale/guard-codeception/badge.png)](https://coveralls.io/r/colby-swandale/guard-codeception)
+# Guard::Codeception [![Build Status](https://travis-ci.org/colby-swandale/guard-codeception.png?branch=master)](https://travis-ci.org/colby-swandale/guard-codeception) [![Coverage Status](https://coveralls.io/repos/colby-swandale/guard-codeception/badge.png?branch=master)](https://coveralls.io/r/colby-swandale/guard-codeception)
 
 Guard::Codeception is an extension to the [guard gem](http://guardgem.org/) for the [codeception](http://codeception.com/) testing framework 
 
