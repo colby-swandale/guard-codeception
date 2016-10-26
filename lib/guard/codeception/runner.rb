@@ -23,10 +23,9 @@ module Guard
       private
 
       def _run
-        UI.info 'Codeception: Starting Tests. Results will be displayed when finished testing.'
+        UI.info 'Codeception: Starting Tests.'
         output = _execute_command _codeception_command
         notifier.notify(parser.parse(output))
-        output
       end
 
       def _codeception_exists?
@@ -51,7 +50,14 @@ module Guard
       end
 
       def _execute_command(command)
-        %x{#{command}}
+        STDOUT.sync = true
+        output = ''
+        io = IO.popen(command, mode="r").each_line do |line|
+          puts line
+          output += line
+        end
+        Process.wait(io.pid)
+        #{output}
       end
 
     end
